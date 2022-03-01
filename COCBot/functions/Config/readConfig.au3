@@ -121,7 +121,7 @@ Func ReadBuildingConfig()
 
 	IniReadS($g_aiStarLaboratoryPos[0], $g_sProfileBuildingPath, "upgrade", "StarLabPosX", -1, "int")
 	IniReadS($g_aiStarLaboratoryPos[1], $g_sProfileBuildingPath, "upgrade", "StarLabPosY", -1, "int")
-	
+
 	IniReadS($g_aiBattleMachinePos[0], $g_sProfileBuildingPath, "upgrade", "BattleMachinePosX", -1, "int")
 	IniReadS($g_aiBattleMachinePos[1], $g_sProfileBuildingPath, "upgrade", "BattleMachinePosY", -1, "int")
 
@@ -303,12 +303,20 @@ EndFunc   ;==>ReadConfig_Debug
 
 Func ReadConfig_Android()
 	; Android Configuration
-	$g_sAndroidGameDistributor = IniRead($g_sProfileConfigPath, "android", "game.distributor", $g_sAndroidGameDistributor)
-	$g_sAndroidGamePackage = IniRead($g_sProfileConfigPath, "android", "game.package", $g_sAndroidGamePackage)
-	$g_sAndroidGameClass = IniRead($g_sProfileConfigPath, "android", "appActitivityName", $g_sAndroidGameClass)
-	$g_sUserGameDistributor = IniRead($g_sProfileConfigPath, "android", "user.distributor", $g_sUserGameDistributor)
-	$g_sUserGamePackage = IniRead($g_sProfileConfigPath, "android", "user.package", $g_sUserGamePackage)
-	$g_sUserGameClass = IniRead($g_sProfileConfigPath, "android", "UserAppActitivityName", $g_sUserGameClass)
+	;$g_sAndroidGameDistributor = IniRead($g_sProfileConfigPath, "android", "game.distributor", $g_sAndroidGameDistributor)
+	;$g_sAndroidGamePackage = IniRead($g_sProfileConfigPath, "android", "game.package", $g_sAndroidGamePackage)
+	;$g_sAndroidGameClass = IniRead($g_sProfileConfigPath, "android", "appActitivityName", $g_sAndroidGameClass)
+	;$g_sUserGameDistributor = IniRead($g_sProfileConfigPath, "android", "user.distributor", $g_sUserGameDistributor)
+	;$g_sUserGamePackage = IniRead($g_sProfileConfigPath, "android", "user.package", $g_sUserGamePackage)
+	;$g_sUserGameClass = IniRead($g_sProfileConfigPath, "android", "UserAppActitivityName", $g_sUserGameClass)
+	; 360 Chinese Version
+	$g_sAndroidGameDistributor = "360"
+	$g_sAndroidGamePackage = "com.supercell.clashofclans.qihoo"
+	$g_sAndroidGameClass = "com.supercell.titan.kunlun.GameAppKunlun"
+	$g_sUserGameDistributor = "360"
+	$g_sUserGamePackage = "com.supercell.clashofclans.qihoo"
+	$g_sUserGameClass = "com.supercell.titan.kunlun.GameAppKunlun"
+
 	$g_iAndroidBackgroundMode = Int(IniRead($g_sProfileConfigPath, "android", "backgroundmode", $g_iAndroidBackgroundMode))
 	$g_iAndroidZoomoutMode = Int(IniRead($g_sProfileConfigPath, "android", "zoomoutmode", $g_iAndroidZoomoutMode))
 	$g_iAndroidAdbReplace = Int(IniRead($g_sProfileConfigPath, "android", "adb.replace", $g_iAndroidAdbReplace))
@@ -428,7 +436,7 @@ Func ReadConfig_600_6()
 	IniReadS($g_iChkBBSuggestedUpgradesIgnoreWall, $g_sProfileConfigPath, "other", "ChkBBSuggestedUpgradesIgnoreWall", $g_iChkBBSuggestedUpgradesIgnoreWall, "Int")
 
 	IniReadS($g_iChkPlacingNewBuildings, $g_sProfileConfigPath, "other", "ChkPlacingNewBuildings", $g_iChkPlacingNewBuildings, "Int")
-	
+
 	IniReadS($g_bBattleMachineUpgrade, $g_sProfileConfigPath, "other", "chkBattleMachineUpgrade", $g_bBattleMachineUpgrade, "Bool")
 
 	IniReadS($g_bChkClanGamesAir, $g_sProfileConfigPath, "other", "ChkClanGamesAir", False, "Bool")
@@ -438,17 +446,17 @@ Func ReadConfig_600_6()
 	IniReadS($g_bChkClanGamesEnabled, $g_sProfileConfigPath, "other", "ChkClanGamesEnabled", False, "Bool")
 
 	IniReadS($g_bChkClanGamesNightVillage, $g_sProfileConfigPath, "other", "ChkClanGamesNightVillage", False, "Bool")
-	
-	
-	
+
+
+
 	IniReadS($g_bChkClanGames60, $g_sProfileConfigPath, "other", "ChkClanGames60", False, "Bool")
 	IniReadS($g_bChkClanGamesPurge, $g_sProfileConfigPath, "other", "ChkClanGamesPurge", False, "Bool")
-	
+
 	IniReadS($g_bChkClanGamesPurgeHome, $g_sProfileConfigPath, "other", "ChkClanGamesPurgeHome", False, "Bool")
-	IniReadS($g_bChkClanGamesPurgeNight, $g_sProfileConfigPath, "other", "ChkClanGamesPurgeNight", False, "Bool")	
-	
-	
-	
+	IniReadS($g_bChkClanGamesPurgeNight, $g_sProfileConfigPath, "other", "ChkClanGamesPurgeNight", False, "Bool")
+
+
+
 	IniReadS($g_bChkClanGamesStopBeforeReachAndPurge, $g_sProfileConfigPath, "other", "ChkClanGamesStopBeforeReachAndPurge", False, "Bool")
 
 	IniReadS($g_bChkClanGamesCollectRewards, $g_sProfileConfigPath, "other", "ChkClanGamesCollectRewards", False, "Bool")
@@ -467,7 +475,7 @@ Func ReadConfig_600_6()
 	IniReadS($g_bChkClanGamesGroundTroop, $g_sProfileConfigPath, "other", "ChkClanGamesGroundTroop", False, "Bool")
 	IniReadS($g_bChkClanGamesMiscellaneous, $g_sProfileConfigPath, "other", "ChkClanGamesMiscellaneous", False, "Bool")
 	IniReadS($g_iPurgeMax, $g_sProfileConfigPath, "other", "PurgeMax", 5, "int")
-	
+
 	$g_sActiveEventName = IniRead($g_sProfileConfigPath, "other", "ActiveEventName", "")
 
 	; Builder Base Attack
@@ -476,10 +484,10 @@ Func ReadConfig_600_6()
 	IniReadS($g_iTxtBBTrophyLowerLimit, $g_sProfileConfigPath, "other", "TxtBBTrophyLowerLimit", 0, "int")
 	IniReadS($g_iTxtBBTrophyUpperLimit, $g_sProfileConfigPath, "other", "TxtBBTrophyUpperLimit", 5000, "int")
 	IniReadS($g_bChkBBAttIfLootAvail, $g_sProfileConfigPath, "other", "ChkBBAttIfLootAvail", False, "Bool")
-	
+
 	IniReadS($g_bChkBBHaltOnGoldFull, $g_sProfileConfigPath, "other", "ChkBBHaltOnGoldFull", False, "Bool")
 	IniReadS($g_bChkBBHaltOnElixirFull, $g_sProfileConfigPath, "other", "ChkBBHaltOnElixirFull", False, "Bool")
-	
+
 	IniReadS($g_bChkBBWaitForMachine, $g_sProfileConfigPath, "other", "ChkBBWaitForMachine", False, "Bool")
 	IniReadS($g_iBBNextTroopDelay, $g_sProfileConfigPath, "other", "iBBNextTroopDelay", $g_iBBNextTroopDelayDefault, "int")
 	IniReadS($g_iBBSameTroopDelay, $g_sProfileConfigPath, "other", "iBBSameTroopDelay", $g_iBBSameTroopDelayDefault, "int")
@@ -668,7 +676,7 @@ Func ReadConfig_600_12()
 
 	$g_asTxtDonateTroop[$eTroopBowler] = StringReplace(IniRead($g_sProfileConfigPath, "donate", "txtDonateBowlers", "bowler|bowl"), "|", @CRLF)
 	$g_asTxtBlacklistTroop[$eTroopBowler] = StringReplace(IniRead($g_sProfileConfigPath, "donate", "txtBlacklistBowlers", "no bowler|bowl no"), "|", @CRLF)
-	
+
 	$g_asTxtDonateTroop[$eTroopSuperBowler] = StringReplace(IniRead($g_sProfileConfigPath, "donate", "txtDonateSuperBowlers", "Super Bowler|SBowl"), "|", @CRLF)
 	$g_asTxtBlacklistTroop[$eTroopSuperBowler] = StringReplace(IniRead($g_sProfileConfigPath, "donate", "txtBlacklistSuperBowlers", "No Super Bowler|SBowl No"), "|", @CRLF)
 

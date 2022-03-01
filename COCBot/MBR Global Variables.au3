@@ -185,12 +185,20 @@ Global Const $g_sGoogle = "Google"
 #Tidy_Off
 ; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 ; <><><><><><>  Android.au3 (and related) globals <><><><><><>
-Global $g_sAndroidGameDistributor = "Google" ; Default CoC Game Distributor, loaded from config.ini
-Global $g_sAndroidGamePackage = "com.supercell.clashofclans" ; Default CoC Game Package, loaded from config.ini
-Global $g_sAndroidGameClass = "com.supercell.titan.GameApp" ; Default CoC Game Class, loaded from config.ini
-Global $g_sUserGameDistributor = "Google" ; User Added CoC Game Distributor, loaded from config.ini
-Global $g_sUserGamePackage = "com.supercell.clashofclans" ; User Added CoC Game Package, loaded from config.ini
-Global $g_sUserGameClass = "com.supercell.titan.GameApp" ; User Added CoC Game Class, loaded from config.ini
+;Global $g_sAndroidGameDistributor = "Google" ; Default CoC Game Distributor, loaded from config.ini
+;Global $g_sAndroidGamePackage = "com.supercell.clashofclans" ; Default CoC Game Package, loaded from config.ini
+;Global $g_sAndroidGameClass = "com.supercell.titan.GameApp" ; Default CoC Game Class, loaded from config.ini
+;Global $g_sUserGameDistributor = "Google" ; User Added CoC Game Distributor, loaded from config.ini
+;Global $g_sUserGamePackage = "com.supercell.clashofclans" ; User Added CoC Game Package, loaded from config.ini
+;Global $g_sUserGameClass = "com.supercell.titan.GameApp" ; User Added CoC Game Class, loaded from config.ini
+; 360 Chinese Version
+Global $g_sAndroidGameDistributor = "360" ; Default CoC Game Distributor, loaded from config.ini
+Global $g_sAndroidGamePackage = "com.supercell.clashofclans.qihoo" ; Default CoC Game Package, loaded from config.ini
+Global $g_sAndroidGameClass = "com.supercell.titan.kunlun.GameAppKunlun" ; Default CoC Game Class, loaded from config.ini
+Global $g_sUserGameDistributor = "360" ; User Added CoC Game Distributor, loaded from config.ini
+Global $g_sUserGamePackage = "com.supercell.clashofclans.qihoo" ; User Added CoC Game Package, loaded from config.ini
+Global $g_sUserGameClass = "com.supercell.titan.kunlun.GameAppKunlun" ; User Added CoC Game Class, loaded from config.ini
+
 
 Global $g_hAndroidLaunchTime = 0 ; __TimerInit() when Android was last launched
 Global $g_iAndroidRebootHours = 24 ; Default hours when Android gets automatically rebooted
@@ -643,7 +651,7 @@ Global Const $g_asTroopNames[$eTroopCount] = [ _
 		"Lava Hound", "Ice Hound", "Bowler", "Super Bowler", "Ice Golem", "Headhunter"]
 Global Const $g_asTroopNamesPlural[$eTroopCount] = [ _
 		"Barbarians", "Super Barbarians", "Archers", "Super Archers", "Giants", "Super Giants", "Goblins", "Sneaky Goblins", "Wall Breakers", _
-		"Super Wall Breakers", "Balloons", "Rocket Balloons", "Wizards", "Super Wizards", "Healers", "Dragons", "Super Dragon", "Pekkas", _ 
+		"Super Wall Breakers", "Balloons", "Rocket Balloons", "Wizards", "Super Wizards", "Healers", "Dragons", "Super Dragon", "Pekkas", _
 		"Baby Dragons", "Inferno Dragons", "Miners", "Electro Dragons", "Yetis", "Dragon Riders", "Minions", "Super Minions", "Hog Riders", "Valkyries", "Super Valkyries", "Golems", "Witches", "Super Witchs", _
 		"Lava Hounds", "Ice Hounds", "Bowlers", "Super Bowlers", "Ice Golems", "Headhunters"]
 Global Const $g_asTroopShortNames[$eTroopCount] = [ _
@@ -756,7 +764,7 @@ Global Const $g_aiSiegeMachineTrainTimePerLevel[$eSiegeMachineCount][5] = [ _
 		[4, 1200, 1200, 1200, 1200], _  ; Stone Slammer
 		[4, 1200, 1200, 1200, 1200], _  ; Siege Barracks
 		[4, 1200, 1200, 1200, 1200], _  ; Log Launcher
-		[4, 1200, 1200, 1200, 1200]]    ; Flame Flinger 
+		[4, 1200, 1200, 1200, 1200]]    ; Flame Flinger
 Global Const $g_aiSiegeMachineCostPerLevel[$eSiegeMachineCount][5] = [ _
 		[4, 100000, 100000, 100000, 100000], _  ; Wall Wrecker
 		[4, 100000, 100000, 100000, 100000], _  ; Battle Blimp
@@ -1535,7 +1543,7 @@ Global Const $g_afWardenUpgCost[$g_iMaxWardenLevel] = [6, 2.5, 3, 3.5, 4, 4.5, 5
 
 ; Battle Machine
 Global $g_iMaxBattleMachineLevel = 30
-Global Const $g_afBattleMachineUpgCost[$g_iMaxBattleMachineLevel] = [0.9, 1.0, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8, 1.9, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0] 
+Global Const $g_afBattleMachineUpgCost[$g_iMaxBattleMachineLevel] = [0.9, 1.0, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8, 1.9, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0]
 
 ; Special Bot activities active
 Global $g_bVillageSearchActive = False ;True during Village Search
@@ -1857,7 +1865,7 @@ $g_oBldgImages.add($eBldgScatter & "_" & "0", @ScriptDir & "\imgxml\Buildings\Sc
 ; EOF
 
 ; Clan Games v3
-Global $g_IsClanGamesActive = False ; use to determine if regular AttackBB should stop 
+Global $g_IsClanGamesActive = False ; use to determine if regular AttackBB should stop
 Global $g_bClanGamesCompleted = False
 Global $g_sActiveEventName = ""
 Global $g_sClanGamesScore = "N/A", $g_sClanGamesTimeRemaining = "N/A"
