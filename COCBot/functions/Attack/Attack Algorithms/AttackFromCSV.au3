@@ -37,48 +37,37 @@ Global $g_aiPixelBottomLeftDOWNDropLine
 Global $g_aiPixelBottomRightUPDropLine
 Global $g_aiPixelBottomRightDOWNDropLine
 
-Local $DeployableLRTB = [0, $g_iGAME_WIDTH - 1, 0, 626]
+;Local $DeployableLRTB = [0, $g_iGAME_WIDTH - 1, 0, 626]
+Global $DeployableLRTB = [0, $g_iGAME_WIDTH - 1, 0, 626] ; used by another isInsideDiamondRedArea
 
-;Local $DiamandAdjX = -25
-;Local $DiamandAdjY = -22
-;Local $OuterDiamondLeft = 26 - $DiamandAdjX, $OuterDiamondRight = 847 + $DiamandAdjX, $OuterDiamondTop = 26 - $DiamandAdjY, $OuterDiamondBottom = 644 + $DiamandAdjY ; set the diamond shape based on reference village
-;Local $DiamondMiddleX = ($OuterDiamondLeft + $OuterDiamondRight) / 2
-;Local $DiamondMiddleY = ($OuterDiamondTop + $OuterDiamondBottom) / 2
-;Local $InnerDiamandDiffX = 60 + $DiamandAdjX ; set the diamond shape based on reference village
-;Local $InnerDiamandDiffY = 45 + $DiamandAdjY ; set the diamond shape based on reference village
+;ConvertInternalExternArea() ; initial layout so variables are not empty - why here? when is it excuted?
 
-; mybotrun
-;Local $DiamandAdjX = -25
-;Local $DiamandAdjY = -22
-;Local $OuterDiamondLeft = 10 - $DiamandAdjX, $OuterDiamondRight = 850 + $DiamandAdjX, $OuterDiamondTop = 10 - $DiamandAdjY, $OuterDiamondBottom = 655 + $DiamandAdjY ; set the diamond shape based on reference village
-;Local $DiamondMiddleX = ($OuterDiamondLeft + $OuterDiamondRight) / 2
-;Local $DiamondMiddleY = ($OuterDiamondTop + $OuterDiamondBottom) / 2
-;Local $InnerDiamandDiffX = 60 + $DiamandAdjX ; set the diamond shape based on reference village
-;Local $InnerDiamandDiffY = 45 + $DiamandAdjY ; set the diamond shape based on reference village
+$g_afRefVillage
 
-; v7.7.7
-;Local $DiamandAdjX = -28
-;Local $DiamandAdjY = -24
-;Local $OuterDiamondLeft = -18 - $DiamandAdjX, $OuterDiamondRight = 857 + $DiamandAdjX, $OuterDiamondTop = 20 - $DiamandAdjY, $OuterDiamondBottom = 679 + $DiamandAdjY ; set the diamond shape based on reference village
-;Local $DiamondMiddleX = ($OuterDiamondLeft + $OuterDiamondRight) / 2
-;Local $DiamondMiddleY = ($OuterDiamondTop + $OuterDiamondBottom) / 2
-;Local $InnerDiamandDiffX = 55 + $DiamandAdjX ; set the diamond shape based on reference village
-;Local $InnerDiamandDiffY = 47 + $DiamandAdjY ; set the diamond shape based on reference village
-
-Local $DiamandAdjX = -25
-Local $DiamandAdjY = -22
+Func ConvertInternalExternArea()
+Local $DiamandAdjX = 30
+Local $DiamandAdjY = 30
 ; set the diamond shape based on reference village
-Local $OuterDiamondLeft = 10 - $DiamandAdjX, $OuterDiamondRight = 850 + $DiamandAdjX, $OuterDiamondTop = 15 - $DiamandAdjY, $OuterDiamondBottom = 650 + $DiamandAdjY
+Local $OuterDiamondLeft = $g_afRefVillage[$g_iTree][1] - $DiamandAdjX 
+Local $OuterDiamondRight = $g_afRefVillage[$g_iTree][2] + $DiamandAdjX 
+Local $OuterDiamondTop = $g_afRefVillage[$g_iTree][3] - $DiamandAdjY
+Local $OuterDiamondBottom = $g_afRefVillage[$g_iTree][4] + $DiamandAdjY
+
+;Local $OuterDiamondLeft = 54 - $DiamandAdjX 
+;Local $OuterDiamondRight = 800 + $DiamandAdjX 
+;Local $OuterDiamondTop = 62 - $DiamandAdjY
+;Local $OuterDiamondBottom = 623 + $DiamandAdjY
+
 Local $DiamondMiddleX = ($OuterDiamondLeft + $OuterDiamondRight) / 2
 Local $DiamondMiddleY = ($OuterDiamondTop + $OuterDiamondBottom) / 2
-Local $InnerDiamandDiffX = 60 + $DiamandAdjX ; set the diamond shape based on reference village
-Local $InnerDiamandDiffY = 45 + $DiamandAdjY ; set the diamond shape based on reference village
 
+Local $InnerDiamandDiffX = 0 + $DiamandAdjX ; set the diamond shape based on reference village
+Local $InnerDiamandDiffY = 0 + $DiamandAdjY ; set the diamond shape based on reference village
 
-
-
-
-Local $InnerDiamondLeft = $OuterDiamondLeft + $InnerDiamandDiffX, $InnerDiamondRight = $OuterDiamondRight - $InnerDiamandDiffX, $InnerDiamondTop = $OuterDiamondTop + $InnerDiamandDiffY, $InnerDiamondBottom = $OuterDiamondBottom - $InnerDiamandDiffY
+Local $InnerDiamondLeft = $OuterDiamondLeft + $InnerDiamandDiffX
+Local $InnerDiamondRight = $OuterDiamondRight - $InnerDiamandDiffX
+Local $InnerDiamondTop = $OuterDiamondTop + $InnerDiamandDiffY
+Local $InnerDiamondBottom = $OuterDiamondBottom - $InnerDiamandDiffY
 
 Local $ExternalAreaRef[8][3] = [ _
 		[$OuterDiamondLeft, $DiamondMiddleY, "LEFT"], _
@@ -102,9 +91,6 @@ Local $InternalAreaRef[8][3] = [ _
 		[$DiamondMiddleX + ($InnerDiamondRight - $DiamondMiddleX) / 2, $DiamondMiddleY + ($InnerDiamondBottom - $DiamondMiddleY) / 2, "BOTTOM-RIGHT"] _
 		]
 
-ConvertInternalExternArea() ; initial layout so variables are not empty
-
-Func ConvertInternalExternArea()
 	Local $x, $y
 
 	; Update External coord.
@@ -746,6 +732,27 @@ Func Algorithm_AttackCSV($testattack = False, $captureredarea = True)
 		SetDebugLog("> " & $g_sBldgNames[$eBldgAirDefense] & " detection not needed, skipping", $COLOR_DEBUG)
 	EndIf
 
+	; 12.1 - Clan Castle ------------------------------------------------------------------------
+
+	$g_aiCSVClanCastlePos = "" ; reset location array?
+
+	If $g_bCSVLocateClanCastle Then
+		If Not _ObjSearch($g_oBldgAttackInfo, $eBldgClanCastle & "_LOCATION") Then
+			$aResult = GetLocationBuilding($eBldgClanCastle, $g_iSearchTH, False)
+			If $aResult = -1 Then SetLog("Monkey ate bad banana: " & "GetLocationBuilding " & $g_sBldgNames[$eBldgClanCastle], $COLOR_ERROR)
+		EndIf
+		$aResult = _ObjGetValue($g_oBldgAttackInfo, $eBldgClanCastle & "_LOCATION")
+		If @error Then
+			_ObjErrMsg("_ObjGetValue " & $g_sBldgNames[$eBldgClanCastle] & " _LOCATION", @error) ; Log errors
+			SetLog("> " & $g_sBldgNames[$eBldgClanCastle] & " location not in dictionary", $COLOR_WARNING)
+		Else
+			If IsArray($aResult) Then $g_aiCSVClanCastlePos = $aResult
+		EndIf
+	Else
+		SetDebugLog("> " & $g_sBldgNames[$eBldgClanCastle] & " detection not needed, skipping", $COLOR_DEBUG)
+	EndIf
+
+
 	; Calculate main attack side
 	ParseAttackCSV_MainSide()
 
@@ -941,6 +948,8 @@ Func _MakeTargetDropPoints($side, $target, $addtiles, $building)
 			$BuildingEnum = $eInternalWall
 		Case "SCATTER"
 			$BuildingEnum = $eBldgScatter
+		Case "CLANCASTLE"
+			$BuildingEnum = $eBldgClanCastle
 		Case Else
 			SetLog("Defense name not understood", $COLOR_ERROR) ; impossible error as value is checked earlier
 			SetError(1, 0, "")
