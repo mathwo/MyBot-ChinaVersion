@@ -191,13 +191,13 @@ Global Const $g_sGoogle = "Google"
 ;Global $g_sUserGameDistributor = "Google" ; User Added CoC Game Distributor, loaded from config.ini
 ;Global $g_sUserGamePackage = "com.supercell.clashofclans" ; User Added CoC Game Package, loaded from config.ini
 ;Global $g_sUserGameClass = "com.supercell.titan.GameApp" ; User Added CoC Game Class, loaded from config.ini
-; 360 Chinese Version
-Global $g_sAndroidGameDistributor = "360" ; Default CoC Game Distributor, loaded from config.ini
-Global $g_sAndroidGamePackage = "com.supercell.clashofclans.qihoo" ; Default CoC Game Package, loaded from config.ini
-Global $g_sAndroidGameClass = "com.supercell.titan.kunlun.GameAppKunlun" ; Default CoC Game Class, loaded from config.ini
-Global $g_sUserGameDistributor = "360" ; User Added CoC Game Distributor, loaded from config.ini
-Global $g_sUserGamePackage = "com.supercell.clashofclans.qihoo" ; User Added CoC Game Package, loaded from config.ini
-Global $g_sUserGameClass = "com.supercell.titan.kunlun.GameAppKunlun" ; User Added CoC Game Class, loaded from config.ini
+; 9Game Chinese Version
+Global $g_sAndroidGameDistributor = "9Game" ; Default CoC Game Distributor, loaded from config.ini
+Global $g_sAndroidGamePackage = "com.supercell.clashofclans.uc" ; Default CoC Game Package, loaded from config.ini
+Global $g_sAndroidGameClass = "com.supercell.titan.kunlun.uc.GameAppKunlunUC" ; Default CoC Game Class, loaded from config.ini
+Global $g_sUserGameDistributor = "9Game" ; User Added CoC Game Distributor, loaded from config.ini
+Global $g_sUserGamePackage = "com.supercell.clashofclans.uc" ; User Added CoC Game Package, loaded from config.ini
+Global $g_sUserGameClass = "com.supercell.titan.kunlun.uc.GameAppKunlunUC" ; User Added CoC Game Class, loaded from config.ini
 
 
 Global $g_hAndroidLaunchTime = 0 ; __TimerInit() when Android was last launched
