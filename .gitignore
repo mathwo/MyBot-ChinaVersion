@@ -6,3 +6,4 @@ MyBot.run.exe
 EnableMBRDebug.txt
 Test*
 .lh/
+.history/**

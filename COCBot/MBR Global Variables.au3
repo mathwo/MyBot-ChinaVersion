@@ -191,13 +191,13 @@ Global Const $g_sGoogle = "Google"
 ;Global $g_sUserGameDistributor = "Google" ; User Added CoC Game Distributor, loaded from config.ini
 ;Global $g_sUserGamePackage = "com.supercell.clashofclans" ; User Added CoC Game Package, loaded from config.ini
 ;Global $g_sUserGameClass = "com.supercell.titan.GameApp" ; User Added CoC Game Class, loaded from config.ini
-; 360 Chinese Version
-Global $g_sAndroidGameDistributor = "360" ; Default CoC Game Distributor, loaded from config.ini
-Global $g_sAndroidGamePackage = "com.supercell.clashofclans.qihoo" ; Default CoC Game Package, loaded from config.ini
-Global $g_sAndroidGameClass = "com.supercell.titan.kunlun.GameAppKunlun" ; Default CoC Game Class, loaded from config.ini
-Global $g_sUserGameDistributor = "360" ; User Added CoC Game Distributor, loaded from config.ini
-Global $g_sUserGamePackage = "com.supercell.clashofclans.qihoo" ; User Added CoC Game Package, loaded from config.ini
-Global $g_sUserGameClass = "com.supercell.titan.kunlun.GameAppKunlun" ; User Added CoC Game Class, loaded from config.ini
+; Tencent Chinese Version
+Global $g_sAndroidGameDistributor = "Tencent" ; Default CoC Game Distributor, loaded from config.ini
+Global $g_sAndroidGamePackage = "com.tencent.tmgp.supercell.clashofclans" ; Default CoC Game Package, loaded from config.ini
+Global $g_sAndroidGameClass = "com.supercell.titan.tencent.GameAppTencent" ; Default CoC Game Class, loaded from config.ini
+Global $g_sUserGameDistributor = "Tencent" ; User Added CoC Game Distributor, loaded from config.ini
+Global $g_sUserGamePackage = "com.tencent.tmgp.supercell.clashofclans" ; User Added CoC Game Package, loaded from config.ini
+Global $g_sUserGameClass = "com.supercell.titan.tencent.GameAppTencent" ; User Added CoC Game Class, loaded from config.ini
 
 
 Global $g_hAndroidLaunchTime = 0 ; __TimerInit() when Android was last launched
@@ -2054,22 +2054,22 @@ Global $g_iEventTime = -1
 
 Global $g_SimplifiedChinese = False
 
-; Spring, Autumn, Clashy, Pirate, Epic Winter, Hog Mountain, Jungle, Epic Jungle, 9th Clash, PumpKin GraveYard, 
-; Snow Day, Tiger Mountain, Primal(PR), Shadow(SH), Royale Scenery, Summer Scenery 
-; Classic War Base, Inferno Tower, 
+; Spring, Autumn, Clashy, Pirate, Epic Winter, Hog Mountain, Jungle, Epic Jungle, 9th Clash, PumpKin GraveYard,
+; Snow Day, Tiger Mountain, Primal(PR), Shadow(SH), Royale Scenery, Summer Scenery
+; Classic War Base, Inferno Tower,
 ; Builder Base,
-; Capital Peak, Barbarian Camp 
+; Capital Peak, Barbarian Camp
 Global Enum $eTreeSS, $eTreeAS, $eTreeCC, $eTreePS, $eTreeEW, $eTreeHM, $eTreeJS, $eTreeEJ, $eTree9C, $eTreePG, _
 			$eTreeSD, $eTreeTM, $eTreePR, $eTreeSH, $eTreeRS, $eTreeSM, $eTreeCS, $eTreeIT, _
 			$eTreeBB, _
 			$eTreeCP, $eTreeBC, $eTreeCount
- 
+
 Global $g_asSceneryNames[$eTreeCount] = [ _
 	"Classic Spring", "Classic Autumn", "Clashy Construct", "Pirate Scenery", "Epic Winter", "Hog Mountain", "Jungle Scenery", "Epic Jungle", "9th Clashiversary", _
-	"Pumpkin Graveyard", "Snowy Day", "Tiger Mountain", "Primal Scenery", "Shadow Scenery", "Royale Scenery", "Summer Scenery", _ 
+	"Pumpkin Graveyard", "Snowy Day", "Tiger Mountain", "Primal Scenery", "Shadow Scenery", "Royale Scenery", "Summer Scenery", _
 	"Classic Scenery", "Inferno Town", "Builder Base", _
 	"Capital Peak", "Barbarian Camp"]
- 
+
 ; village size, left, right, top, bottom, dragOffsetX, dragOffSetY, village size 2, AdjLeft, AdjRight, AdjTop, AdjBottom
 Global Const $g_afRefVillage[$eTreeCount][10] = [ _
 	[470.847607649426, 45, 800, 66, 630, 470.847607649426, 50, 50, 42, 42], _		; SS complete
@@ -2093,7 +2093,7 @@ Global Const $g_afRefVillage[$eTreeCount][10] = [ _
 	[414.473696779371, 123, 786, 148, 643, 414.205410325898, 50, 46, 38, 42], _ ; BB partial
 	[461.860421647731, 73, 814, 85, 637, 461.860421647731, 10, 10, 10, 10], _   ; CP partial
 	[427.945118331064, 97, 785, 91, 604, 427.945118331064, 10, 10, 10, 10]] 	; BC partial
-	
+
 Global $g_iTree = $eTreeSS						; default to classic
 
 Global $g_bOnBuilderBaseEnemyVillage = False
