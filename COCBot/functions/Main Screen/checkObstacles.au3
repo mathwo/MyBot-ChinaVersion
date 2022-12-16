@@ -80,7 +80,7 @@ Func _checkObstacles($bBuilderBase = False, $bRecursive = False) ;Checks if some
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	; Detect All Reload Button errors => 1- Another device, 2- Take a break, 3- Connection lost or error, 4- Out of sync, 5- Inactive, 6- Maintenance, 7- SCID Login Screen
-	If UBound(decodeSingleCoord(FindImageInPlace("Error", $g_sImgError, "630,300(2,20)", False, $g_iAndroidLollipop))) > 1 Then		
+	If UBound(decodeSingleCoord(FindImageInPlace("Error", $g_sImgError, "630,300(2,20)", False, $g_iAndroidLollipop))) > 1 Then
 
 		If ConnectionLost($bRecursive) Then Return True
 
@@ -510,30 +510,30 @@ Func ConnectionLost($bRecursive, $bDebugLog=False)
 
 	; Initial Timer
 	Local $hTimer = TimerInit()
-	
+
 	SetLog("Searching for ConnectionLost ...", $COLOR_DEBUG)
-	
+
 	Local $aiConnectionLost = decodeSingleCoord(findImage("ConnectionLost", $sImgConnectionLost, GetDiamondFromRect("175,290,400,350"), 1, True))
-	
+
 	If $g_bDebugImageSave Then SaveDebugRectImage("ConnectionLost", "175,290,400,350")
-	
+
 	If IsArray($aiConnectionLost) and UBound($aiConnectionLost, 1) = 2 Then
 
 		SetLog("Detected Connection Lost! (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds)", $COLOR_DEBUG)
 
 		If _Sleep(100) Then Return
-		
+
 		SetLog("Searching for Another Device Connected ...", $COLOR_DEBUG)
 
 		; check for 'Another device'
 		Local $aiDevice = decodeSingleCoord(findImage("device", $sImgDevice, GetDiamondFromRect("230,330,360,360"), 1, True))
 
 		If $g_bDebugImageSave Then SaveDebugRectImage("AnotherDeviceConnected", "230,330,360,360")
-	
+
 		If IsArray($aiDevice) and UBound($aiDevice, 1) = 2 Then
-		
+
 			If $g_bDebugImageSave Then SaveDebugImage("AnotherDeviceConnected", False)
-		
+
 			SetLog("Detected Another Device Connected! (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds)", $COLOR_DEBUG)
 
 			If $g_iAnotherDeviceWaitTime > 3600 Then
@@ -546,35 +546,35 @@ Func ConnectionLost($bRecursive, $bDebugLog=False)
 				SetLog("Another Device has connected, waiting " & Floor(Mod($g_iAnotherDeviceWaitTime, 60)) & " seconds", $COLOR_ERROR)
 				PushMsg("AnotherDevice")
 			EndIf
-			
+
 			If _SleepStatus($g_iAnotherDeviceWaitTime * 1000) Then Return ; Wait as long as user setting in GUI, default 120 seconds
-	
+
 			SetLog("Searching for Reload \ Try Again Button ...", $COLOR_DEBUG)
-	
+
 			; find reload / try again button
 			Local $aiReloadBtn = decodeSingleCoord(findImage("device", $sImgReloadBtn, GetDiamondFromRect("175,405,330,425"), 1, True))
-			
+
 			If IsArray($aiReloadBtn) and UBound($aiReloadBtn, 1) = 2 Then
-			
+
 				If _Sleep(100) Then Return
-			
+
 				SetLog("Found reload button....")
-				
+
 				PureClick($aiReloadBtn[0], $aiReloadBtn[1])
 			Else
 				SaveDebugRectImage("ConnectionLostReloadBtn", "175,405,330,425")
-			
+
 				checkObstacles_ReloadCoC()
 			EndIf
-			
+
 			If $g_bForceSinglePBLogoff Then $g_bGForcePBTUpdate = True
-			
+
 			checkObstacles_ResetSearch()
-			
-			Return True		
+
+			Return True
 		Else
 			If $g_bDebugImageSave Then SaveDebugImage("ConnectionLost", False)
-		
+
 			SetLog("Connection lost, Reloading CoC", $COLOR_ERROR)
 			If ($g_bChkSharedPrefs Or $g_bUpdateSharedPrefs) And HaveSharedPrefs() Then
 				SetLog("Please wait for loading CoC!")
@@ -589,18 +589,18 @@ Func ConnectionLost($bRecursive, $bDebugLog=False)
 			Local $aiReloadBtn = decodeSingleCoord(findImage("device", $sImgReloadBtn, GetDiamondFromRect("175,405,330,425"), 1, True))
 
 			If IsArray($aiReloadBtn) and UBound($aiReloadBtn, 1) = 2 Then
-			
+
 				If _Sleep(100) Then Return
-			
+
 				SetLog("Found reload button....")
-				
+
 				PureClick($aiReloadBtn[0], $aiReloadBtn[1])
 			Else
 				SaveDebugRectImage("ConnectionLostReloadBtn", "175,405,330,425")
-			
+
 				checkObstacles_ReloadCoC()
 			EndIf
-			
+
 			Return True
 		EndIf
 	EndIf
@@ -616,42 +616,42 @@ Func RateGame()
 
 	; Initial Timer
 	Local $hTimer = TimerInit()
-	
+
 	SetLog("Searching for Rate Game ...", $COLOR_DEBUG)
-	
+
 	Local $aiRateGame = decodeSingleCoord(findImage("RateGame", $sImgRateGame, GetDiamondFromRect("175,290,400,350"), 1, True))
-	
+
 	If $g_bDebugImageSave Then SaveDebugRectImage("RateGame", "175,290,400,350")
-	
+
 	SaveDebugRectImage("RateGame", "175,290,400,350")
-	
+
 	If IsArray($aiRateGame) and UBound($aiRateGame, 1) = 2 Then
 
 		SetLog("Detected Rate Game! (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds)", $COLOR_DEBUG)
 
 		If _Sleep(100) Then Return
-		
+
 		SetLog("Searching for NEVER Button ...", $COLOR_DEBUG)
-	
+
 		; find 'Never' button
 		Local $aiNeverBtn = decodeSingleCoord(findImage("NeverBtn", $sImgNeverBtn, GetDiamondFromRect("540,395,700,450"), 1, True))
 
 		SaveDebugRectImage("RateGameNeverBtn", "540,395,700,450")
 
 		If IsArray($aiNeverBtn) and UBound($aiNeverBtn, 1) = 2 Then
-			
+
 			If _Sleep(100) Then Return
-			
+
 			SetLog("Found NEVER button....", $COLOR_DEBUG)
-			
+
 			PureClick($aiNeverBtn[0], $aiNeverBtn[1])
-			
+
 			$g_bMinorObstacle = True
-			
+
 			Return True
 		Else
 			SetLog("Failed to find the NEVER Button", $COLOR_DEBUG)
-			
+
 			Return False
 		EndIf
 
@@ -667,22 +667,22 @@ Func ClashOfMagicAdvert()
 	Local $hTimer = TimerInit()
 	Local $sImgClashOfMagicAdvert = @ScriptDir & "\imgxml\CheckObstacles\ClashOfMagicAdvert*"
 	Local $aiSearchFeature[4] = [820,10,850,35]
-	
+
 	SetLog("Searching for Clash Of Magic Advert ...")
-	
+
 	Local $aiClashOfMagicAdvert = decodeSingleCoord(findImage("ClashOfMagicAdvert", $sImgClashOfMagicAdvert, GetDiamondFromArray($aiSearchFeature), 1, True))
-	
+
 	If $g_bDebugImageSave Then SaveDebugRectImage("ClashOfMagicAdvert", "820,10,850,35")
-	
+
 	SaveDebugRectImage("ClashOfMagicAdvert", "820,10,850,35")
-	
+
 	If IsArray($aiClashOfMagicAdvert) and UBound($aiClashOfMagicAdvert, 1) = 2 Then
 		SetLog("Detected Clash Of Magic Advert! (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds)", $COLOR_INFO)
 
 		If _Sleep(500) Then Return
-	
+
 		ClickP($aiClashOfMagicAdvert)
-						
+
 		Return True
 	EndIf
 
